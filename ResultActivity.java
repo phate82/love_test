@@ -2,29 +2,16 @@ package com.example.lovetest;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.Button;
-import android.widget.TextView;
-
 public class ResultActivity extends AppCompatActivity {
-    
-    private TextView resultPerc;
-    private TextView resultText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
         
-        resultPerc = findViewById(R.id.perc_result);
-        resultText = findViewById(R.id.text_result);
-        Button backButton = findViewById(R.id.button_back);
-        backButton.setOnClickListener(v -> finish());
-
-        Intent intent = getIntent();
-        String firstName = intent.getStringExtra("first_name");
-        String secondName = intent.getStringExtra("second_name");
+        //inizializzare i componenti
+        //impostare il click listener del bottone
+        //recuperare i nomi dall'Intent
         
         calculateAffinity(firstName, secondName);
     }
@@ -34,8 +21,7 @@ public class ResultActivity extends AppCompatActivity {
         int score = calculateNameScore(firstName) + calculateNameScore(secondName);
         int normalizedScore = normalizeScore(score);
 
-        resultPerc.setText(normalizedScore + "%");
-        resultText.setText(firstName+" e "+secondName+" sono compatibili al "+normalizedScore+"%");
+        //usare il punteggio calcolato per avvalorare i campi di testo sull'interfaccia
     }
 
     private static int calculateNameScore(String name) {
